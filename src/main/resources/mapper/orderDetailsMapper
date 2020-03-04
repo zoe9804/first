@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.version.first.mapper.OrderDetailsMapper">
+    <resultMap id="orderDetailsResult" type="com.version.first.bean.OrderDetails">
+        <id property="orderDetailsId" column="order_details_id"/>
+        <result property="orderId" column="order_id"/>
+        <result property="menuId" column="menu_id"/>
+        <result property="menuAmount" column="menu_amount"/>
+        <result property="sumPrice" column="sun_price"/>
+    </resultMap>
+</mapper>

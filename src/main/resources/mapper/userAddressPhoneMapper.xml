@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.version.first.mapper.UserAddressPhoneMapper">
+    <resultMap id="userAddressPhoneResult" type="com.version.first.bean.UserAddressPhone">
+        <id property="userApID" column="user_ap_id"/>
+        <result property="userApPhone" column="user_ap_phone"/>
+        <result property="userApAddress" column="user_ap_address"/>
+        <result property="userApName" column="user_ap_name"/>
+    </resultMap>
+</mapper>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.version.first.mapper.DeliverMapper">
+    <resultMap id="deliverResult" type="com.version.first.bean.Deliver">
+        <id property="deliverId" column="deliver_id"/>
+        <result property="deliverName" column="deliver_name"/>
+        <result property="deliverPhone" column="deliver_phone"/>
+    </resultMap>
+    <insert id="insertDeliver" parameterType="com.version.first.bean.Deliver">
+        insert deliver (deliver_name, deliver_phone) VALUE (#{deliver.deliverName},#{deliver.deliverPhone})
+    </insert>
+    <select id="selectAllDeliver" resultMap="deliverResult">
+        select * from deliver where deliver_id !=0
+    </select>
+
+</mapper>
