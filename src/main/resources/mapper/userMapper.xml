@@ -8,4 +8,11 @@
         <result property="userName" column="user_name"/>
         <result property="userPassword" column="user_password"/>
     </resultMap>
+    <insert id="insertUser" parameterType="com.version.first.bean.User">
+        insert user (user_name,user_password,user_phone)
+        value (#{user.userName},#{user.userPassword},#{user.userPhone})
+    </insert>
+    <select id="selectUserByUserPhone" resultMap="userResult">
+        select * from user where user_phone=#{user.userPhone}
+    </select>
 </mapper>

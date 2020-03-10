@@ -14,13 +14,13 @@ import java.util.List;
 public class DeliverController {
     @Resource
     DeliverService deliverService;
-    @RequestMapping("/addDeliver")
+    @RequestMapping("/addDeliver")//添加配送员
     @ResponseBody
     public String AddDeliver(@RequestBody Deliver deliver){
         String result = deliverService.addDeliver(deliver);
         return result;
     }
-    @RequestMapping("/getAllDeliver")
+    @RequestMapping("/getAllDeliver")//查看所有配送员
     @ResponseBody
     public List<Deliver> GetAllDeliver(){
         List<Deliver> deliverList = deliverService.getAllDeliver();
