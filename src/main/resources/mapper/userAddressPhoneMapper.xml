@@ -4,9 +4,38 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.version.first.mapper.UserAddressPhoneMapper">
     <resultMap id="userAddressPhoneResult" type="com.version.first.bean.UserAddressPhone">
-        <id property="userApID" column="user_ap_id"/>
+        <id property="id" column="id"/>
         <result property="userApPhone" column="user_ap_phone"/>
-        <result property="userApAddress" column="user_ap_address"/>
+        <result property="userApStreet" column="user_ap_street"/>
         <result property="userApName" column="user_ap_name"/>
+        <result property="userApProvince" column="user_ap_province"/>
+        <result property="userApCity" column="user_ap_city"/>
+        <result property="userApArea" column="user_ap_area"/>
+        <result property="userId" column="user_id"/>
+        <result property="userWord" column="user_word"/>
     </resultMap>
+    <select id="selectAllByUserId" resultMap="userAddressPhoneResult">
+        select * from user_address_phone where user_id=#{userAddressPhone.userId}
+    </select>
+    <select id="selectAllById" resultMap="userAddressPhoneResult" >
+        select * from user_address_phone where id=#{userAddressPhone.id}
+    </select>
+    <insert id="insertUserAddressPhone" parameterType="com.version.first.bean.UserAddressPhone">
+        insert user_address_phone(user_id, user_ap_name, user_ap_phone, user_ap_province, user_ap_city, user_ap_area, user_ap_street, user_word)
+            VALUE (#{userAddressPhone.userId},#{userAddressPhone.userApName},#{userAddressPhone.userApPhone},#{userAddressPhone.userApProvince},
+                   #{userAddressPhone.userApCity},#{userAddressPhone.userApArea},#{userAddressPhone.userApStreet},#{userAddressPhone.userWord})
+    </insert>
+    <delete id="deleteUserAddressPhone" parameterType="com.version.first.bean.UserAddressPhone">
+        delete from user_address_phone where id =#{userAddressPhone.Id}
+    </delete>
+    <update id="updateUserAddressPhone" parameterType="com.version.first.bean.UserAddressPhone">
+        update user_address_phone set user_ap_name=#{userAddressPhone.userApName},
+                                      user_ap_phone=#{userAddressPhone.userApPhone},
+                                      user_ap_province=#{userAddressPhone.userApProvince},
+                                      user_ap_city=#{userAddressPhone.userApCity},
+                                      user_ap_area=#{userAddressPhone.userApArea},
+                                      user_ap_street=#{userAddressPhone.userApStreet},
+                                      user_word=#{userAddressPhone.userWord}
+            where id =#{userAddressPhone.Id}
+    </update>
 </mapper>
