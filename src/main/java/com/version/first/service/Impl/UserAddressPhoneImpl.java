@@ -33,4 +33,14 @@ public class UserAddressPhoneImpl implements UserAddressPhoneService {
         userAddressPhoneMapper.updateUserAddressPhone(userAddressPhone);
         return userAddressPhoneMapper.selectAllById(userAddressPhone);
     }
+
+    @Override
+    public String deleteUserAddressPhoneById(UserAddressPhone userAddressPhone) {
+        try{
+            userAddressPhoneMapper.deleteUserAddressPhone(userAddressPhone);
+            return "success";
+        }catch (Exception e){
+            return ("error:\n"+e);
+        }
+    }
 }

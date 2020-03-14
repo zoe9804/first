@@ -8,4 +8,5 @@ public interface UserAddressPhoneService {
     String addUserAddressPhoneService(UserAddressPhone userAddressPhone);
     List<UserAddressPhone> getAllUserAddressPhone(UserAddressPhone userAddressPhone);
     UserAddressPhone updateUserAddressPhone(UserAddressPhone userAddressPhone);
+    String deleteUserAddressPhoneById(UserAddressPhone userAddressPhone);
 }

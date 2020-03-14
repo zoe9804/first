@@ -34,4 +34,10 @@ public class UserAddressPhoneController {
     public UserAddressPhone UpdateUserAddressPhoneById(@RequestBody UserAddressPhone userAddressPhone){
         return userAddressPhoneService.updateUserAddressPhone(userAddressPhone);
     }
+
+    @RequestMapping("/deleteUserAddressPhoneById")//删除地址和联系方式
+    @ResponseBody
+    public String DeleteUserAddressPhoneById(@RequestBody UserAddressPhone userAddressPhone){
+        return userAddressPhoneService.deleteUserAddressPhoneById(userAddressPhone);
+    }
 }

@@ -26,7 +26,7 @@
                    #{userAddressPhone.userApCity},#{userAddressPhone.userApArea},#{userAddressPhone.userApStreet},#{userAddressPhone.userWord})
     </insert>
     <delete id="deleteUserAddressPhone" parameterType="com.version.first.bean.UserAddressPhone">
-        delete from user_address_phone where id =#{userAddressPhone.Id}
+        delete from user_address_phone where id =#{userAddressPhone.id}
     </delete>
     <update id="updateUserAddressPhone" parameterType="com.version.first.bean.UserAddressPhone">
         update user_address_phone set user_ap_name=#{userAddressPhone.userApName},
@@ -36,6 +36,6 @@
                                       user_ap_area=#{userAddressPhone.userApArea},
                                       user_ap_street=#{userAddressPhone.userApStreet},
                                       user_word=#{userAddressPhone.userWord}
-            where id =#{userAddressPhone.Id}
+            where id =#{userAddressPhone.id}
     </update>
 </mapper>
