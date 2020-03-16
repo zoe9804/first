@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.version.first.mapper.CartMapper">
+    <resultMap id="cartResult" type="com.version.first.bean.Cart">
+        <id property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="menuId" column="menu_id"/>
+        <result property="menuAmount" column="menu_amount"/>
+        <association property="menu" column="menu_id" javaType="com.version.first.bean.Menu">
+            <id property="menuId" column="menu_id"/>
+            <result property="typeId" column="type_id"/>
+            <result property="menuName" column="menu_name"/>
+            <result property="menuPrice" column="menu_price"/>
+            <result property="menuPicture" column="menu_picture"/>
+            <result property="menuRemark" column="menu_remark"/>
+        </association>
+    </resultMap>
+    <insert id="insertCart" parameterType="com.version.first.bean.Cart">
+        insert cart (user_id, menu_id, menu_amount) VALUE (#{cart.userId},#{cart.menuId},#{cart.menuAmount})
+    </insert>
+    <select id="selectCartByUserId" resultMap="cartResult">
+        select * from cart left join menu on cart.menu_id = menu.menu_id where user_id=#{cart.userId}
+    </select>
+    <select id="selectCartByUserIdAndMenuId" resultMap="cartResult">
+        select * from cart where user_id=#{cart.userId} and menu_id=#{cart.menuId}
+    </select>
+    <update id="updateCartByUserIdAndMenuId" parameterType="com.version.first.bean.Cart">
+        update cart
+        set menu_amount=#{cart.menuAmount}
+        where user_id=#{cart.userId} and menu_id=#{cart.menuId}
+    </update>
+</mapper>
