@@ -3,20 +3,31 @@ package com.version.first.bean;
 import java.util.Date;
 
 public class Order {
-    private int orderId;
+    private int id;
     private int userId;
+    private int orderId;
+    private int sumPrice;
     private int payId;
+    private int userAddressPhoneId;
     private String orderRemark;
-    private Date orderTime;
-    private int orderTotalPrice;
     private int deliverId;
+    private int orderState;
+    private Date orderTime;
 
-    public int getOrderId() {
-        return orderId;
+    public Date getOrderTime() {
+        return orderTime;
     }
 
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
+    public void setOrderTime(Date orderTime) {
+        this.orderTime = orderTime;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getUserId() {
@@ -27,12 +38,36 @@ public class Order {
         this.userId = userId;
     }
 
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
+    }
+
+    public int getSumPrice() {
+        return sumPrice;
+    }
+
+    public void setSumPrice(int sumPrice) {
+        this.sumPrice = sumPrice;
+    }
+
     public int getPayId() {
         return payId;
     }
 
     public void setPayId(int payId) {
         this.payId = payId;
+    }
+
+    public int getUserAddressPhoneId() {
+        return userAddressPhoneId;
+    }
+
+    public void setUserAddressPhoneId(int userAddressPhoneId) {
+        this.userAddressPhoneId = userAddressPhoneId;
     }
 
     public String getOrderRemark() {
@@ -43,27 +78,19 @@ public class Order {
         this.orderRemark = orderRemark;
     }
 
-    public Date getOrderTime() {
-        return orderTime;
-    }
-
-    public void setOrderTime(Date orderTime) {
-        this.orderTime = orderTime;
-    }
-
-    public int getOrderTotalPrice() {
-        return orderTotalPrice;
-    }
-
-    public void setOrderTotalPrice(int orderTotalPrice) {
-        this.orderTotalPrice = orderTotalPrice;
-    }
-
     public int getDeliverId() {
         return deliverId;
     }
 
     public void setDeliverId(int deliverId) {
         this.deliverId = deliverId;
+    }
+
+    public int getOrderState() {
+        return orderState;
+    }
+
+    public void setOrderState(int orderState) {
+        this.orderState = orderState;
     }
 }

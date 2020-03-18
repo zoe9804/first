@@ -8,6 +8,10 @@
         <result property="orderId" column="order_id"/>
         <result property="menuId" column="menu_id"/>
         <result property="menuAmount" column="menu_amount"/>
-        <result property="sumPrice" column="sun_price"/>
+        <result property="userId" column="user_id"/>
     </resultMap>
+    <insert id="insertOrderDetails" parameterType="com.version.first.bean.OrderDetails">
+        insert order_details (order_id, menu_id, menu_amount, user_id)
+        VALUE (#{orderdetails.orderId},#{orderdetails.menuId},#{orderdetails.menuAmount},#{orderdetails.userId})
+    </insert>
 </mapper>

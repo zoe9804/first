@@ -5,15 +5,7 @@ public class OrderDetails {
     private int orderId;
     private int menuId;
     private int menuAmount;
-    private int sumPrice;
-
-    public int getOrderDetailId() {
-        return orderDetailsId;
-    }
-
-    public void setOrderDetailId(int orderDetailId) {
-        this.orderDetailsId = orderDetailId;
-    }
+    private int userId;
 
     public int getOrderId() {
         return orderId;
@@ -39,11 +31,19 @@ public class OrderDetails {
         this.menuAmount = menuAmount;
     }
 
-    public int getSumPrice() {
-        return sumPrice;
+    public int getOrderDetailsId() {
+        return orderDetailsId;
     }
 
-    public void setSumPrice(int sumPrice) {
-        this.sumPrice = sumPrice;
+    public void setOrderDetailsId(int orderDetailsId) {
+        this.orderDetailsId = orderDetailsId;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }

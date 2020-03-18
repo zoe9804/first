@@ -4,12 +4,22 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.version.first.mapper.OrderMapper">
     <resultMap id="orderResult" type="com.version.first.bean.Order">
-        <id property="orderId" column="order_id"/>
+        <id property="id" column="id"/>
+        <result property="orderId" column="order_id"/>
         <result property="userId" column="user_id"/>
         <result property="payId" column="pay_id"/>
         <result property="orderRemark" column="order_remark"/>
         <result property="orderTime" column="order_time"/>
-        <result property="orderTotalPrice" column="order_total_price"/>
+        <result property="sumPrice" column="sum_price"/>
+        <result property="userAddressPhoneId" column="user_address_phone_id"/>
         <result property="deliverId" column="deliver_id"/>
+        <result property="orderState" column="order_state"/>
     </resultMap>
+    <insert id="insertOrder" parameterType="com.version.first.bean.Order">
+        insert `order` (order_id, user_id, pay_id, order_remark,
+                        order_time, deliver_id,user_address_phone_id,
+                        sum_price)
+        VALUE (#{order.orderId},#{order.userId},#{order.payId},#{order.orderRemark},
+               #{order.orderTime},#{order.deliverId},#{order.userAddressPhoneId},#{order.sumPrice})
+    </insert>
 </mapper>

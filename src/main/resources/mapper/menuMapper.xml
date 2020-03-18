@@ -11,4 +11,8 @@
         <result property="menuPicture" column="menu_picture"/>
         <result property="menuRemark" column="menu_remark"/>
     </resultMap>
+    <insert id="insertMenu" parameterType="com.version.first.bean.Menu">
+        insert menu (type_id, menu_name, menu_price, menu_picture, menu_remark)
+        VALUE(#{menu.typeId},#{menu.menuName},#{menu.menuPrice},#{menu.menuPicture},#{menu.menuRemark})
+    </insert>
 </mapper>
