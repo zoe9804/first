@@ -6,12 +6,13 @@
     <resultMap id="orderDetailsResult" type="com.version.first.bean.OrderDetails">
         <id property="orderDetailsId" column="order_details_id"/>
         <result property="orderId" column="order_id"/>
-        <result property="menuId" column="menu_id"/>
         <result property="menuAmount" column="menu_amount"/>
-        <result property="userId" column="user_id"/>
+        <result property="menuId" column="menu_id"/>
     </resultMap>
-    <insert id="insertOrderDetails" parameterType="com.version.first.bean.OrderDetails">
-        insert order_details (order_id, menu_id, menu_amount, user_id)
-        VALUE (#{orderdetails.orderId},#{orderdetails.menuId},#{orderdetails.menuAmount},#{orderdetails.userId})
+    <insert id="insertOrderDetailsList" parameterType="list">
+        insert order_details (order_id, menu_id, menu_amount) VALUES
+        <foreach collection="orderDetailsList" item="item" index="index" separator=",">
+            (#{item.orderId},#{item.menuId},#{item.menuAmount})
+        </foreach>
     </insert>
 </mapper>

@@ -15,4 +15,7 @@
         insert menu (type_id, menu_name, menu_price, menu_picture, menu_remark)
         VALUE(#{menu.typeId},#{menu.menuName},#{menu.menuPrice},#{menu.menuPicture},#{menu.menuRemark})
     </insert>
+    <select id="selectMenuByTypeId" resultMap="menuResult">
+        select * from menu where type_id= #{menu.typeId} limit #{menu.page},10
+    </select>
 </mapper>

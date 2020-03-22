@@ -6,19 +6,22 @@ import com.version.first.service.OrderDetailsService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class OrderDetailsImpl implements OrderDetailsService {
     @Resource
     OrderDetailsMapper orderDetailsMapper;
 
+
     @Override
-    public String addOrderDetails(OrderDetails orderDetails) {
+    public String addOrderDetailsList(List<OrderDetails> orderDetailsList) {
         try {
-            orderDetailsMapper.insertOrderDetails(orderDetails);
-            return "success";
-        } catch (Exception e) {
-            return ("error:\n" + e);
+            orderDetailsMapper.insertOrderDetailsList(orderDetailsList);
+            return "orderDetailsList success";
+        }catch (Exception e){
+            return "orderDetailsList error";
         }
+
     }
 }

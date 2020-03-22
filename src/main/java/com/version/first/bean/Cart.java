@@ -5,6 +5,7 @@ public class Cart {
     private int userId;
     private int menuId;
     private int menuAmount;
+    private Menu menu;
 
     public Menu getMenu() {
         return menu;
@@ -13,8 +14,6 @@ public class Cart {
     public void setMenu(Menu menu) {
         this.menu = menu;
     }
-
-    private Menu menu;
 
     public int getId() {
         return id;

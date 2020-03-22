@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface MenuService {
     String addMenu(Menu menu);
+    List<Menu> getMenuTypeId(Menu menu);
 }

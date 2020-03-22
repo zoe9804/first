@@ -14,6 +14,7 @@
         <result property="userAddressPhoneId" column="user_address_phone_id"/>
         <result property="deliverId" column="deliver_id"/>
         <result property="orderState" column="order_state"/>
+
     </resultMap>
     <insert id="insertOrder" parameterType="com.version.first.bean.Order">
         insert `order` (order_id, user_id, pay_id, order_remark,

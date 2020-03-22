@@ -5,7 +5,6 @@ public class OrderDetails {
     private int orderId;
     private int menuId;
     private int menuAmount;
-    private int userId;
 
     public int getOrderId() {
         return orderId;
@@ -39,11 +38,4 @@ public class OrderDetails {
         this.orderDetailsId = orderDetailsId;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
 }

@@ -7,6 +7,15 @@ public class Menu {
     private int menuPrice;
     private String menuPicture;
     private String menuRemark;
+    private int page;
+
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
+    }
 
     public int getMenuId() {
         return menuId;

@@ -1,6 +1,7 @@
 package com.version.first.bean;
 
 import java.util.Date;
+import java.util.List;
 
 public class Order {
     private int id;
@@ -13,6 +14,15 @@ public class Order {
     private int deliverId;
     private int orderState;
     private Date orderTime;
+    private List<OrderDetails> orderDetails;
+
+    public List<OrderDetails> getOrderDetails() {
+        return orderDetails;
+    }
+
+    public void setOrderDetails(List<OrderDetails> orderDetails) {
+        this.orderDetails = orderDetails;
+    }
 
     public Date getOrderTime() {
         return orderTime;

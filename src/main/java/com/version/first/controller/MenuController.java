@@ -20,4 +20,10 @@ public class MenuController {
     public String AddMenu(@RequestBody Menu menu){
         return menuService.addMenu(menu);
     }
+
+    @RequestMapping("/getMenuByTypeId")//首页根据TypeId显示菜品
+    @ResponseBody
+    public List<Menu> GetMenuTypeId(@RequestBody Menu menu){
+        return menuService.getMenuTypeId(menu);
+    }
 }
