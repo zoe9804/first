@@ -26,4 +26,10 @@ public class MenuController {
     public List<Menu> GetMenuTypeId(@RequestBody Menu menu){
         return menuService.getMenuTypeId(menu);
     }
+
+    @RequestMapping("/findMenuByFuzzyQurryMenuName")//模糊查询菜品
+    @ResponseBody
+    public List<Menu> FindMenuByFuzzyQurryMenuName(@RequestBody Menu menu){
+        return menuService.findMenuByFuzzyQurryMenuName(menu);
+    }
 }

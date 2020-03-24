@@ -19,8 +19,6 @@ public class OrderController {
     @RequestMapping("/addOrder")//提交订单
     @ResponseBody
     public String AddOrder(@RequestBody Order order){
-        List<OrderDetails> orderDetails=order.getOrderDetails();
-        //orderDetailsService.addOrderDetails(orderDetails);
         return orderService.addOrder(order);
 
     }

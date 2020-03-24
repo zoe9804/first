@@ -29,4 +29,9 @@ public class MenuImpl implements MenuService {
         menu.setPage((menu.getPage()-1)*10);
         return menuMapper.selectMenuByTypeId(menu);
     }
+
+    @Override
+    public List<Menu> findMenuByFuzzyQurryMenuName(Menu menu) {
+        return menuMapper.selectMenuByFuzzyQurryMenuName(menu);
+    }
 }

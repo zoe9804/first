@@ -18,4 +18,7 @@
     <select id="selectMenuByTypeId" resultMap="menuResult">
         select * from menu where type_id= #{menu.typeId} limit #{menu.page},10
     </select>
+    <select id="selectMenuByFuzzyQurryMenuName" resultMap="menuResult">
+        select * from menu where menu_name like concat('%',#{menu.menuName},'%')
+    </select>
 </mapper>
