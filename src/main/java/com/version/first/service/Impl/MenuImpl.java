@@ -31,7 +31,7 @@ public class MenuImpl implements MenuService {
     }
 
     @Override
-    public List<Menu> findMenuByFuzzyQurryMenuName(Menu menu) {
-        return menuMapper.selectMenuByFuzzyQurryMenuName(menu);
+    public List<Menu> findMenuByFuzzyQueryMenuName(Menu menu) {
+        return menuMapper.selectMenuByFuzzyQueryMenuName(menu);
     }
 }

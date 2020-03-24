@@ -7,5 +7,5 @@ import java.util.List;
 public interface MenuService {
     String addMenu(Menu menu);
     List<Menu> getMenuTypeId(Menu menu);
-    List<Menu> findMenuByFuzzyQurryMenuName(Menu menu);
+    List<Menu> findMenuByFuzzyQueryMenuName(Menu menu);
 }
