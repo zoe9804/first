@@ -15,4 +15,7 @@
             (#{item.orderId},#{item.menuId},#{item.menuAmount})
         </foreach>
     </insert>
+    <select id="selectOrderDetailsByOrderId" resultMap="orderDetailsResult">
+        select * from order_details where order_id=#{orderId}
+    </select>
 </mapper>

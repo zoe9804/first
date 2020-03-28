@@ -14,7 +14,10 @@
         <result property="userAddressPhoneId" column="user_address_phone_id"/>
         <result property="deliverId" column="deliver_id"/>
         <result property="orderState" column="order_state"/>
-
+        <association property="orderDetails"
+                     select="com.version.first.mapper.OrderDetailsMapper.selectOrderDetailsByOrderId"
+                     column="order_id">
+        </association>
     </resultMap>
     <insert id="insertOrder" parameterType="com.version.first.bean.Order">
         insert `order` (order_id, user_id, pay_id, order_remark,
@@ -23,4 +26,7 @@
         VALUE (#{order.orderId},#{order.userId},#{order.payId},#{order.orderRemark},
                #{order.orderTime},#{order.deliverId},#{order.userAddressPhoneId},#{order.sumPrice})
     </insert>
+    <select id="selectOrderByUserId" resultMap="orderResult">
+        select * from `order` where user_id=#{order.userId}
+    </select>
 </mapper>

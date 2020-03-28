@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface OrderDetailsMapper {
     void insertOrderDetailsList(@Param("orderDetailsList")List<OrderDetails> orderDetailsList);
+    List<OrderDetails> selectOrderDetailsByOrderId(@Param("orderDetailsList")List<OrderDetails> orderDetailsList);
 }

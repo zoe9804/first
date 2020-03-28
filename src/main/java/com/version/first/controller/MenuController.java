@@ -32,4 +32,10 @@ public class MenuController {
     public List<Menu> FindMenuByFuzzyQueryMenuName(@RequestBody Menu menu){
         return menuService.findMenuByFuzzyQueryMenuName(menu);
     }
+
+    @RequestMapping("/deleteMenuByName")//后台删除菜品
+    @ResponseBody
+    public String DeleteMenuByName(@RequestBody Menu menu){
+        return menuService.deleteMenuByName(menu);
+    }
 }

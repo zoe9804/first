@@ -21,4 +21,7 @@
     <select id="selectMenuByFuzzyQueryMenuName" resultMap="menuResult">
         select * from menu where menu_name like concat('%',#{menu.menuName},'%')
     </select>
+    <delete id="deleteMenuByName" parameterType="com.version.first.bean.Menu">
+        delete from menu where menu_name=#{menu.menuName}
+    </delete>
 </mapper>

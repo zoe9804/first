@@ -29,7 +29,16 @@ public class OrderImpl implements OrderService{
             }catch (Exception e){
                 return "order error";
             }
+    }
 
+    @Override
+    public List<Order> findOrderByUserId(Order order) {
+        return orderMapper.selectOrderByUserId(order);
+    }
+
+    @Override
+    public List<Order> findOrderRemarkByMenuName(Order order) {
+        return null;
     }
 
 

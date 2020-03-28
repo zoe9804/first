@@ -34,4 +34,14 @@ public class MenuImpl implements MenuService {
     public List<Menu> findMenuByFuzzyQueryMenuName(Menu menu) {
         return menuMapper.selectMenuByFuzzyQueryMenuName(menu);
     }
+
+    @Override
+    public String deleteMenuByName(Menu menu) {
+        try {
+            menuMapper.deleteMenuByName(menu);
+            return "success";
+        }catch (Exception e){
+            return "error";
+        }
+    }
 }

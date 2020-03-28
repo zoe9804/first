@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 
 @Controller
@@ -25,8 +26,30 @@ public class UserController {
     @ResponseBody
     public String userLogin(@RequestBody User user){
         return userService.userLogin(user);
-
     }
 
+    @RequestMapping("/addAdministrator")//添加管理员
+    @ResponseBody
+    public String AddAdministrator(@RequestBody User user){
+        return userService.addAdministrator(user);
+    }
+
+    @RequestMapping("/findAllUser")//查看所有用户
+    @ResponseBody
+    public List<User> FindAllUser(){
+        return userService.FindALlUser();
+    }
+
+    @RequestMapping("/findUserOrAdministratorByPhone")//通过phone查找用户
+    @ResponseBody
+    public User FindUserOrAdministratorByPhone(@RequestBody User user){
+        return userService.findUserOrAdministratorByPhone(user);
+    }
+
+    @RequestMapping("/findAllAdministrator")//查看所有用户
+    @ResponseBody
+    public List<User> FindAllAdministrator(){
+        return userService.FindALlAdministrator();
+    }
 }
 

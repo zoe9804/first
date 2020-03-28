@@ -8,4 +8,5 @@ public interface MenuService {
     String addMenu(Menu menu);
     List<Menu> getMenuTypeId(Menu menu);
     List<Menu> findMenuByFuzzyQueryMenuName(Menu menu);
+    String deleteMenuByName(Menu menu);
 }

@@ -9,10 +9,16 @@
         <result property="userPassword" column="user_password"/>
     </resultMap>
     <insert id="insertUser" parameterType="com.version.first.bean.User">
-        insert user (user_name,user_password,user_phone)
-        value (#{user.userName},#{user.userPassword},#{user.userPhone})
+        insert user (user_name,user_password,user_phone,user_identity)
+        value (#{user.userName},#{user.userPassword},#{user.userPhone},#{user.userIdentity})
     </insert>
-    <select id="selectUserByUserPhone" resultMap="userResult">
+    <select id="selectUserOrAdministratorByUserPhone" resultMap="userResult">
         select * from user where user_phone=#{user.userPhone}
+    </select>
+    <select id="selectAllUser" resultMap="userResult">
+        select * from user where user_identity=0;
+    </select>
+    <select id="selectAllAdministrator" resultMap="userResult">
+        select * from user where user_identity=1;
     </select>
 </mapper>
