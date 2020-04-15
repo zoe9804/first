@@ -16,10 +16,16 @@ public class OrderDetailsController {
     @Resource
     OrderDetailsService orderDetailsService;
 
-    @RequestMapping("/addOrderDetailsList")//添加加订单明细
+    @RequestMapping("/addOrderDetailsList")//添加订单明细
     @ResponseBody
     public String AddOrderDetailsList(@RequestBody List<OrderDetails> list){
         return orderDetailsService.addOrderDetailsList(list);
+    }
+
+    @RequestMapping("/findOrderIdByMenuIdAndUser")//根据一个菜名查找该菜品的评价及评价人
+    @ResponseBody
+    public List<Object> FindOrderIdByMenuId(@RequestBody OrderDetails orderDetails){
+        return orderDetailsService.findOrderIdByMenuId(orderDetails);
     }
 
 }

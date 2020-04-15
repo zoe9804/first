@@ -19,7 +19,6 @@ public class OrderController {
     @ResponseBody
     public String AddOrder(@RequestBody Order order){
         return orderService.addOrder(order);
-
     }
 
     @RequestMapping("/findOrderByUserId")//查看订单
@@ -27,9 +26,22 @@ public class OrderController {
     public List<Order> FindOrderByUserId(@RequestBody Order order){
         return orderService.findOrderByUserId(order);
     }
-    @RequestMapping("/findOrderRemarkByMenuName")//所有评价
+
+    @RequestMapping("/findOrderByUserIdAddOrderId")//用户查看订单详情
     @ResponseBody
-    public List<Order> FindOrderRemarkByMenuName(@RequestBody Order order){
-        return orderService.findOrderRemarkByMenuName(order);
+    public Order FindOrderByUserIdAddOrderId(@RequestBody Order order){
+        return orderService.findOrderByUserIdAndOrderId(order);
+    }
+
+    @RequestMapping("/changeOrderStateToDelivering")//将订单状态修改为正在配送
+    @ResponseBody
+    public String ChangeOrderStateToDelivering(@RequestBody Order order){
+        return orderService.changeOrderStateToDelivering(order);
+    }
+
+    @RequestMapping("/changeOrderStateToDelivered")//将订单状态修改为已送达
+    @ResponseBody
+    public String ChangeOrderStateToDelivered(@RequestBody Order order){
+        return orderService.changeOrderStateToDelivered(order);
     }
 }

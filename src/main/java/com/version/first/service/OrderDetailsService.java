@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface OrderDetailsService {
     String addOrderDetailsList(List<OrderDetails> orderDetailsList);
+    List<Object> findOrderIdByMenuId(OrderDetails orderDetails);
 }

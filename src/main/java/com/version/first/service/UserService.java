@@ -1,15 +1,16 @@
 package com.version.first.service;
 
+import com.version.first.Result.ResponseWrapper;
 import com.version.first.bean.User;
 
 import java.util.List;
 
 
 public interface UserService {
-    String addUser(User user);
-    String userLogin(User user);
-    String addAdministrator(User user);
-    List<User> FindALlUser();
-    List<User> FindALlAdministrator();
-    User findUserOrAdministratorByPhone(User user);
+    ResponseWrapper addUser(User user);
+    ResponseWrapper userLogin(User user);
+    ResponseWrapper addAdministrator(User user);
+    ResponseWrapper FindALlUser();
+    ResponseWrapper FindALlAdministrator();
+    ResponseWrapper findUserOrAdministratorByPhone(User user);
 }

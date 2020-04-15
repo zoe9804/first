@@ -6,7 +6,6 @@ public class Menu {
     private String menuName;
     private int menuPrice;
     private String menuPicture;
-    private String menuRemark;
     private int page;
 
     public int getPage() {
@@ -57,11 +56,4 @@ public class Menu {
         this.menuPicture = menuPicture;
     }
 
-    public String getMenuRemark() {
-        return menuRemark;
-    }
-
-    public void setMenuRemark(String menuRemark) {
-        this.menuRemark = menuRemark;
-    }
 }

@@ -24,4 +24,11 @@ public class OrderDetailsImpl implements OrderDetailsService {
         }
 
     }
+
+    @Override
+    public List<Object> findOrderIdByMenuId(OrderDetails orderDetails) {
+        return orderDetailsMapper.selectOrderIdByMenuId(orderDetails);
+    }
+
+
 }

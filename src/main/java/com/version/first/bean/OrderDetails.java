@@ -5,6 +5,15 @@ public class OrderDetails {
     private int orderId;
     private int menuId;
     private int menuAmount;
+    private String menuRemark;
+
+    public String getMenuRemark() {
+        return menuRemark;
+    }
+
+    public void setMenuRemark(String menuRemark) {
+        this.menuRemark = menuRemark;
+    }
 
     public int getOrderId() {
         return orderId;

@@ -7,4 +7,14 @@
         <id property="typeId" column="type_id"/>
         <result property="typeName" column="type_name"/>
     </resultMap>
+    <insert id="insertMenuType" parameterType="com.version.first.bean.MenuType">
+        insert menu_type (type_name) value (#{menuType.typeName})
+    </insert>
+    <select id="selectAllMenuType" resultMap="menuTypeResult">
+        select * from menu_type where type_id != 0
+    </select>
+    <delete id="deleteMenuTypeByMenuTypeId">
+        delete from menu_type where type_id = #{menuType.typeId}
+    </delete>
+
 </mapper>

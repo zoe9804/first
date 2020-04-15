@@ -9,11 +9,10 @@
         <result property="menuName" column="menu_name"/>
         <result property="menuPrice" column="menu_price"/>
         <result property="menuPicture" column="menu_picture"/>
-        <result property="menuRemark" column="menu_remark"/>
     </resultMap>
     <insert id="insertMenu" parameterType="com.version.first.bean.Menu">
-        insert menu (type_id, menu_name, menu_price, menu_picture, menu_remark)
-        VALUE(#{menu.typeId},#{menu.menuName},#{menu.menuPrice},#{menu.menuPicture},#{menu.menuRemark})
+        insert menu (type_id, menu_name, menu_price, menu_picture)
+        VALUE(#{menu.typeId},#{menu.menuName},#{menu.menuPrice},#{menu.menuPicture})
     </insert>
     <select id="selectMenuByTypeId" resultMap="menuResult">
         select * from menu where type_id= #{menu.typeId} limit #{menu.page},10
@@ -24,4 +23,12 @@
     <delete id="deleteMenuByName" parameterType="com.version.first.bean.Menu">
         delete from menu where menu_name=#{menu.menuName}
     </delete>
+    <update id="updateMenuByMenuId" parameterType="com.version.first.bean.Menu">
+        update menu
+            set menu_name = #{menu.menuName},
+                type_id = #{menu.typeId},
+                menu_price = #{menu.menuPrice},
+                menu_picture = #{menu.menuPicture}
+            where menu_id = #{menu.menuId}
+    </update>
 </mapper>

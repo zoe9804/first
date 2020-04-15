@@ -14,7 +14,6 @@
             <result property="menuName" column="menu_name"/>
             <result property="menuPrice" column="menu_price"/>
             <result property="menuPicture" column="menu_picture"/>
-            <result property="menuRemark" column="menu_remark"/>
         </association>
     </resultMap>
     <insert id="insertCart" parameterType="com.version.first.bean.Cart">

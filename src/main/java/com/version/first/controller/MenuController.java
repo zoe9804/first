@@ -38,4 +38,10 @@ public class MenuController {
     public String DeleteMenuByName(@RequestBody Menu menu){
         return menuService.deleteMenuByName(menu);
     }
+
+    @RequestMapping("/changeMenuByMenuId")//后台修改菜品
+    @ResponseBody
+    public String changeMenuByMenuId(@RequestBody Menu menu){
+        return menuService.changeMenuByMenuId(menu);
+    }
 }

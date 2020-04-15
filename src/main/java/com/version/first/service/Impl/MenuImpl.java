@@ -44,4 +44,14 @@ public class MenuImpl implements MenuService {
             return "error";
         }
     }
+
+    @Override
+    public String changeMenuByMenuId(Menu menu){
+        try {
+            menuMapper.updateMenuByMenuId(menu);
+            return "success";
+        }catch (Exception e){
+            return "error";
+        }
+    }
 }

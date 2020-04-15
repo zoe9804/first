@@ -1,5 +1,6 @@
 package com.version.first.controller;
 
+import com.version.first.Result.ResponseWrapper;
 import com.version.first.bean.User;
 import com.version.first.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -18,37 +19,37 @@ public class UserController {
 
     @RequestMapping("/addUser")//用户注册
     @ResponseBody
-    public String AddUser(@RequestBody User user){
+    public ResponseWrapper AddUser(@RequestBody User user){
         return userService.addUser(user);
     }
 
     @RequestMapping("/userLogin")//用户登陆
     @ResponseBody
-    public String userLogin(@RequestBody User user){
+    public ResponseWrapper userLogin(@RequestBody User user){
         return userService.userLogin(user);
     }
 
     @RequestMapping("/addAdministrator")//添加管理员
     @ResponseBody
-    public String AddAdministrator(@RequestBody User user){
+    public ResponseWrapper AddAdministrator(@RequestBody User user){
         return userService.addAdministrator(user);
     }
 
     @RequestMapping("/findAllUser")//查看所有用户
     @ResponseBody
-    public List<User> FindAllUser(){
+    public ResponseWrapper FindAllUser(){
         return userService.FindALlUser();
     }
 
     @RequestMapping("/findUserOrAdministratorByPhone")//通过phone查找用户
     @ResponseBody
-    public User FindUserOrAdministratorByPhone(@RequestBody User user){
+    public ResponseWrapper FindUserOrAdministratorByPhone(@RequestBody User user){
         return userService.findUserOrAdministratorByPhone(user);
     }
 
     @RequestMapping("/findAllAdministrator")//查看所有用户
     @ResponseBody
-    public List<User> FindAllAdministrator(){
+    public ResponseWrapper FindAllAdministrator(){
         return userService.FindALlAdministrator();
     }
 }

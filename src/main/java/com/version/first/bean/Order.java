@@ -8,11 +8,10 @@ public class Order {
     private int userId;
     private int orderId;
     private int sumPrice;
-    private int payId;
+    private String payId;
     private int userAddressPhoneId;
-    private String orderRemark;
     private int deliverId;
-    private int orderState;
+    private String orderState;
     private Date orderTime;
     private List<OrderDetails> orderDetails;
 
@@ -64,11 +63,11 @@ public class Order {
         this.sumPrice = sumPrice;
     }
 
-    public int getPayId() {
+    public String getPayId() {
         return payId;
     }
 
-    public void setPayId(int payId) {
+    public void setPayId(String payId) {
         this.payId = payId;
     }
 
@@ -80,14 +79,6 @@ public class Order {
         this.userAddressPhoneId = userAddressPhoneId;
     }
 
-    public String getOrderRemark() {
-        return orderRemark;
-    }
-
-    public void setOrderRemark(String orderRemark) {
-        this.orderRemark = orderRemark;
-    }
-
     public int getDeliverId() {
         return deliverId;
     }
@@ -96,11 +87,11 @@ public class Order {
         this.deliverId = deliverId;
     }
 
-    public int getOrderState() {
+    public String getOrderState() {
         return orderState;
     }
 
-    public void setOrderState(int orderState) {
+    public void setOrderState(String orderState) {
         this.orderState = orderState;
     }
 }

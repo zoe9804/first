@@ -9,4 +9,5 @@ public interface MenuService {
     List<Menu> getMenuTypeId(Menu menu);
     List<Menu> findMenuByFuzzyQueryMenuName(Menu menu);
     String deleteMenuByName(Menu menu);
+    String changeMenuByMenuId(Menu menu);
 }

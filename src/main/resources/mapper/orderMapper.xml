@@ -8,7 +8,6 @@
         <result property="orderId" column="order_id"/>
         <result property="userId" column="user_id"/>
         <result property="payId" column="pay_id"/>
-        <result property="orderRemark" column="order_remark"/>
         <result property="orderTime" column="order_time"/>
         <result property="sumPrice" column="sum_price"/>
         <result property="userAddressPhoneId" column="user_address_phone_id"/>
@@ -20,13 +19,22 @@
         </association>
     </resultMap>
     <insert id="insertOrder" parameterType="com.version.first.bean.Order">
-        insert `order` (order_id, user_id, pay_id, order_remark,
+        insert `order` (order_id, user_id, pay_id,
                         order_time, deliver_id,user_address_phone_id,
                         sum_price)
-        VALUE (#{order.orderId},#{order.userId},#{order.payId},#{order.orderRemark},
+        VALUE (#{order.orderId},#{order.userId},#{order.payId},
                #{order.orderTime},#{order.deliverId},#{order.userAddressPhoneId},#{order.sumPrice})
     </insert>
     <select id="selectOrderByUserId" resultMap="orderResult">
         select * from `order` where user_id=#{order.userId}
     </select>
+    <select id="selectOrderByUserIdAndOrderId" resultMap="orderResult">
+        select * from `order` where user_id=#{order.userId} And order_id=#{order.orderId}
+    </select>
+    <update id="updateOrderStateToDelivering" parameterType="com.version.first.bean.Order">
+        update `order` set order_state = 1 where order_id = #{order.orderId}
+    </update>
+    <update id="updateOrderStateToDelivered" parameterType="com.version.first.bean.Order">
+        update `order` set order_state = 2 where order_id = #{order.orderId}
+    </update>
 </mapper>
