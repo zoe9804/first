@@ -1,13 +1,13 @@
 package com.version.first.service;
 
+import com.version.first.Result.ResponseWrapper;
 import com.version.first.bean.Menu;
 
-import java.util.List;
 
 public interface MenuService {
-    String addMenu(Menu menu);
-    List<Menu> getMenuTypeId(Menu menu);
-    List<Menu> findMenuByFuzzyQueryMenuName(Menu menu);
-    String deleteMenuByName(Menu menu);
-    String changeMenuByMenuId(Menu menu);
+    ResponseWrapper addMenu(Menu menu);
+    ResponseWrapper getMenuTypeId(Menu menu);
+    ResponseWrapper findMenuByFuzzyQueryMenuName(Menu menu);
+    ResponseWrapper deleteMenuByName(Menu menu);
+    ResponseWrapper changeMenuByMenuId(Menu menu);
 }

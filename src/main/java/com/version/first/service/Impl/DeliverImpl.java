@@ -1,5 +1,6 @@
 package com.version.first.service.Impl;
 
+import com.version.first.Result.ResponseWrapper;
 import com.version.first.bean.Deliver;
 import com.version.first.mapper.DeliverMapper;
 import com.version.first.service.DeliverService;
@@ -13,16 +14,20 @@ public class DeliverImpl implements DeliverService {
     @Resource
     DeliverMapper deliverMapper;
 
-    public String addDeliver(Deliver deliver){
+    public ResponseWrapper addDeliver(Deliver deliver){
         try{
             deliverMapper.insertDeliver(deliver);
-            return "success";
+            return ResponseWrapper.markSuccessButNoData();
         }catch (Exception e){
-            return ("error:\n"+e);
+            return ResponseWrapper.markError(e);
         }
     }
 
-    public List<Deliver> getAllDeliver(){
-        return deliverMapper.selectAllDeliver();
+    public ResponseWrapper getAllDeliver(){
+        try {
+            return ResponseWrapper.markSuccess(deliverMapper.selectAllDeliver());
+        }catch (Exception e) {
+            return ResponseWrapper.markError(e);
+        }
     }
 }

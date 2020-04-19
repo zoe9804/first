@@ -2,9 +2,9 @@ package com.version.first.Result;
 
 
 public enum ReturnCode {
-        SUCCESS("0000","查询成功有数据"),
-        NODATA("0001","查询成功无记录"),
-        FAILED("0002","查询失败"),
+        SUCCESS("0000","成功有数据"),
+        NODATA("0001","成功无数据"),
+        FAILED("0010","失败"),
         EXCEPTION("0003","出现异常"),
         ACCOUNT_EXISTS("0004","用户已存在"),
         ACCOUNT_ERROR("1000", "账户不存在或被禁用"),

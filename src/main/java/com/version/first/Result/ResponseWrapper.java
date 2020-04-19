@@ -61,12 +61,12 @@ public class ResponseWrapper {
      *
      * @return
      */
-    public static ResponseWrapper markError() {
+    public static ResponseWrapper markError(Object data) {
         ResponseWrapper responseWrapper = new ResponseWrapper();
         responseWrapper.setSuccess(false);
         responseWrapper.setCode(ReturnCode.FAILED.getCode());
         responseWrapper.setMsg(ReturnCode.FAILED.getMsg());
-        responseWrapper.setData(null);
+        responseWrapper.setData(data);
         return responseWrapper;
     }
 
@@ -90,11 +90,11 @@ public class ResponseWrapper {
      * @param data
      * @return
      */
-    public static ResponseWrapper markSuccess(String msg,Object data) {
+    public static ResponseWrapper markSuccess(Object data) {
         ResponseWrapper responseWrapper = new ResponseWrapper();
         responseWrapper.setSuccess(true);
         responseWrapper.setCode(ReturnCode.SUCCESS.getCode());
-        responseWrapper.setMsg(msg);
+        responseWrapper.setMsg(ReturnCode.SUCCESS.getMsg());
         responseWrapper.setData(data);
         return responseWrapper;
     }

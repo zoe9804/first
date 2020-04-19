@@ -1,5 +1,6 @@
 package com.version.first.service.Impl;
 
+import com.version.first.Result.ResponseWrapper;
 import com.version.first.bean.OrderDetails;
 import com.version.first.mapper.OrderDetailsMapper;
 import com.version.first.service.OrderDetailsService;
@@ -15,19 +16,24 @@ public class OrderDetailsImpl implements OrderDetailsService {
 
 
     @Override
-    public String addOrderDetailsList(List<OrderDetails> orderDetailsList) {
+    public ResponseWrapper addOrderDetailsList(List<OrderDetails> orderDetailsList) {
         try {
             orderDetailsMapper.insertOrderDetailsList(orderDetailsList);
-            return "orderDetailsList success";
+            return ResponseWrapper.markCustom(true,"0000","添加成功",null);
         }catch (Exception e){
-            return "orderDetailsList error";
+            return ResponseWrapper.markError(e);
         }
 
     }
 
     @Override
-    public List<Object> findOrderIdByMenuId(OrderDetails orderDetails) {
-        return orderDetailsMapper.selectOrderIdByMenuId(orderDetails);
+    public ResponseWrapper findOrderIdByMenuId(OrderDetails orderDetails) {
+        try {
+            return ResponseWrapper.markCustom(true,"0000","查询成功",orderDetailsMapper.selectOrderIdByMenuId(orderDetails));
+        }catch (Exception e){
+            return ResponseWrapper.markError(e);
+        }
+
     }
 
 

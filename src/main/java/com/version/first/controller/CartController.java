@@ -1,5 +1,6 @@
 package com.version.first.controller;
 
+import com.version.first.Result.ResponseWrapper;
 import com.version.first.bean.Cart;
 import com.version.first.service.CartService;
 import org.springframework.stereotype.Controller;
@@ -19,16 +20,16 @@ public class CartController {
 
     @RequestMapping("/addCart")//添加购物车
     @ResponseBody
-    public String AddCart(@RequestBody Cart cart){
+    public ResponseWrapper AddCart(@RequestBody Cart cart){
         return cartService.addCart(cart);
     }
 
     @RequestMapping("/getUserCart")//通过userId在cart和menu中获取数据
     @ResponseBody
-    public Map<String,Object> GetUserCart(@RequestBody Cart cart){
+    public ResponseWrapper GetUserCart(@RequestBody Cart cart){
         Map<String,Object> cartMap=new HashMap<>();
         List<Cart> cartList = cartService.getCartByUserId(cart);
         cartMap.put("cart",cartList);
-        return cartMap;
+        return ResponseWrapper.markSuccess(cartMap);
     }
 }

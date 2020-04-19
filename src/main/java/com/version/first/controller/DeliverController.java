@@ -1,5 +1,6 @@
 package com.version.first.controller;
 
+import com.version.first.Result.ResponseWrapper;
 import com.version.first.bean.Deliver;
 import com.version.first.service.DeliverService;
 import org.springframework.stereotype.Controller;
@@ -17,13 +18,13 @@ public class DeliverController {
 
     @RequestMapping("/addDeliver")//添加配送员
     @ResponseBody
-    public String AddDeliver(@RequestBody Deliver deliver){
+    public ResponseWrapper AddDeliver(@RequestBody Deliver deliver){
         return deliverService.addDeliver(deliver);
     }
 
     @RequestMapping("/getAllDeliver")//查看所有配送员
     @ResponseBody
-    public List<Deliver> GetAllDeliver(){
+    public ResponseWrapper GetAllDeliver(){
         return deliverService.getAllDeliver();
     }
 }

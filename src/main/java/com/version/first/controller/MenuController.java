@@ -1,5 +1,6 @@
 package com.version.first.controller;
 
+import com.version.first.Result.ResponseWrapper;
 import com.version.first.bean.Menu;
 import com.version.first.service.MenuService;
 import org.springframework.stereotype.Controller;
@@ -17,31 +18,31 @@ public class MenuController {
 
     @RequestMapping("/addMenu")//后台添加菜品
     @ResponseBody
-    public String AddMenu(@RequestBody Menu menu){
+    public ResponseWrapper AddMenu(@RequestBody Menu menu){
         return menuService.addMenu(menu);
     }
 
     @RequestMapping("/getMenuByTypeId")//首页根据TypeId显示菜品
     @ResponseBody
-    public List<Menu> GetMenuTypeId(@RequestBody Menu menu){
+    public ResponseWrapper GetMenuTypeId(@RequestBody Menu menu){
         return menuService.getMenuTypeId(menu);
     }
 
     @RequestMapping("/findMenuByFuzzyQueryMenuName")//模糊查询菜品
     @ResponseBody
-    public List<Menu> FindMenuByFuzzyQueryMenuName(@RequestBody Menu menu){
+    public ResponseWrapper FindMenuByFuzzyQueryMenuName(@RequestBody Menu menu){
         return menuService.findMenuByFuzzyQueryMenuName(menu);
     }
 
     @RequestMapping("/deleteMenuByName")//后台删除菜品
     @ResponseBody
-    public String DeleteMenuByName(@RequestBody Menu menu){
+    public ResponseWrapper DeleteMenuByName(@RequestBody Menu menu){
         return menuService.deleteMenuByName(menu);
     }
 
     @RequestMapping("/changeMenuByMenuId")//后台修改菜品
     @ResponseBody
-    public String changeMenuByMenuId(@RequestBody Menu menu){
+    public ResponseWrapper changeMenuByMenuId(@RequestBody Menu menu){
         return menuService.changeMenuByMenuId(menu);
     }
 }

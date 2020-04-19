@@ -1,5 +1,6 @@
 package com.version.first.service.Impl;
 
+import com.version.first.Result.ResponseWrapper;
 import com.version.first.bean.Menu;
 import com.version.first.mapper.MenuMapper;
 import com.version.first.service.MenuService;
@@ -15,43 +16,52 @@ public class MenuImpl implements MenuService {
     MenuMapper menuMapper;
 
     @Override
-    public String addMenu(Menu menu) {
+    public ResponseWrapper addMenu(Menu menu) {
         try{
             menuMapper.insertMenu(menu);
-            return "success";
+            return ResponseWrapper.markSuccessButNoData();
         }catch (Exception e){
-            return ("error:\n"+e);
+            return ResponseWrapper.markError(e);
         }
     }
 
     @Override
-    public List<Menu> getMenuTypeId(Menu menu) {
+    public ResponseWrapper getMenuTypeId(Menu menu) {
         menu.setPage((menu.getPage()-1)*10);
-        return menuMapper.selectMenuByTypeId(menu);
+        try {
+            return ResponseWrapper.markSuccess(menuMapper.selectMenuByTypeId(menu));
+        }catch (Exception e){
+            return ResponseWrapper.markError(e);
+        }
+
     }
 
     @Override
-    public List<Menu> findMenuByFuzzyQueryMenuName(Menu menu) {
-        return menuMapper.selectMenuByFuzzyQueryMenuName(menu);
+    public ResponseWrapper findMenuByFuzzyQueryMenuName(Menu menu) {
+        try {
+            return ResponseWrapper.markSuccess(menuMapper.selectMenuByFuzzyQueryMenuName(menu));
+        }catch (Exception e){
+            return ResponseWrapper.markError(e);
+        }
     }
 
     @Override
-    public String deleteMenuByName(Menu menu) {
+    public ResponseWrapper deleteMenuByName(Menu menu) {
         try {
             menuMapper.deleteMenuByName(menu);
-            return "success";
+            return ResponseWrapper.markSuccessButNoData();
         }catch (Exception e){
-            return "error";
+            return ResponseWrapper.markError(e);
         }
     }
 
     @Override
-    public String changeMenuByMenuId(Menu menu){
+    public ResponseWrapper changeMenuByMenuId(Menu menu){
         try {
             menuMapper.updateMenuByMenuId(menu);
-            return "success";
+            return ResponseWrapper.markSuccessButNoData();
         }catch (Exception e){
-            return "error";
+            return ResponseWrapper.markError(e);
         }
     }
 }

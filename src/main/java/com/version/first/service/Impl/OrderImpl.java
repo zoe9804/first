@@ -1,5 +1,6 @@
 package com.version.first.service.Impl;
 
+import com.version.first.Result.ResponseWrapper;
 import com.version.first.bean.Order;
 import com.version.first.bean.OrderDetails;
 import com.version.first.mapper.OrderDetailsMapper;
@@ -20,83 +21,104 @@ public class OrderImpl implements OrderService{
     OrderDetailsMapper orderDetailsMapper;
 
     @Override
-    public String addOrder(Order order) {
+    public ResponseWrapper addOrder(Order order) {
         try {
             orderMapper.insertOrder(order);
             List<OrderDetails> orderDetailsList = order.getOrderDetails();
             orderDetailsMapper.insertOrderDetailsList(orderDetailsList);
-            return "success";
+            return ResponseWrapper.markCustom(true,"0000","添加订单成功",null);
         }catch (Exception e){
-            return "error";
+            return ResponseWrapper.markError(e);
         }
     }
 
     @Override
-    public List<Order> findOrderByUserId(Order order) {
+    public ResponseWrapper findOrderByUserId(Order order) {
         List<Order> orderList= orderMapper.selectOrderByUserId(order);
-        for (Order value : orderList) {
-            switch (value.getOrderState()) {
+        try {
+            for (Order value : orderList) {
+                switch (value.getOrderState()) {
+                    case "0":
+                        value.setOrderState("正在准备");
+                        break;
+                    case "1":
+                        value.setOrderState("正在配送");
+                        break;
+                    case "2":
+                        value.setOrderState("已送达");
+                        break;
+                    default:
+                        value.setOrderState("已完成");
+                }
+                switch (value.getPayId()) {
+                    case "1":
+                        value.setPayId("支付宝");
+                        break;
+                    case "2":
+                        value.setPayId("微信");
+                        break;
+                    case "3":
+                        value.setPayId("货到付款");
+                        break;
+                }
+            }
+            return ResponseWrapper.markCustom(true,"0000","查找成功",orderList);
+        }catch (Exception e){
+            return ResponseWrapper.markError(e);
+        }
+    }
+
+    @Override
+    public ResponseWrapper findOrderByUserIdAndOrderId(Order order) {
+        Order order1 = orderMapper.selectOrderByUserIdAndOrderId(order);
+        try {
+            switch (order1.getOrderState()) {
                 case "0":
-                    value.setOrderState("正在准备");
+                    order1.setOrderState("正在准备");
                     break;
                 case "1":
-                    value.setOrderState("正在配送");
+                    order1.setOrderState("正在配送");
                     break;
                 case "2":
-                    value.setOrderState("已送达");
+                    order1.setOrderState("已送达");
                     break;
                 default:
-                    value.setOrderState("已完成");
+                    order1.setOrderState("已完成");
             }
-            switch (value.getPayId()) {
+            switch (order1.getPayId()) {
                 case "1":
-                    value.setPayId("支付宝");
+                    order1.setPayId("支付宝");
                     break;
                 case "2":
-                    value.setPayId("微信");
+                    order1.setPayId("微信");
                     break;
                 case "3":
-                    value.setPayId("货到付款");
+                    order1.setPayId("货到付款");
                     break;
             }
+            return ResponseWrapper.markCustom(true,"0000","查找成功",order1);
+        }catch (Exception e){
+            return ResponseWrapper.markError(e);
         }
-        return orderList;
     }
 
     @Override
-    public Order findOrderByUserIdAndOrderId(Order order) {
-        Order order1 = orderMapper.selectOrderByUserIdAndOrderId(order);
-        switch (order1.getOrderState()){
-            case "0":order1.setOrderState("正在准备");break;
-            case "1":order1.setOrderState("正在配送");break;
-            case "2":order1.setOrderState("已送达");break;
-            default :order1.setOrderState("已完成");
-        }
-        switch(order1.getPayId()){
-            case "1":order1.setPayId("支付宝");break;
-            case "2":order1.setPayId("微信");break;
-            case "3":order1.setPayId("货到付款");break;
-        }
-        return order1;
-    }
-
-    @Override
-    public String changeOrderStateToDelivering(Order order) {
+    public ResponseWrapper changeOrderStateToDelivering(Order order) {
         try {
             orderMapper.updateOrderStateToDelivering(order);
-            return "success";
+            return ResponseWrapper.markSuccessButNoData();
         }catch (Exception e){
-            return "error";
+            return ResponseWrapper.markError(e);
         }
     }
 
     @Override
-    public String changeOrderStateToDelivered(Order order) {
+    public ResponseWrapper changeOrderStateToDelivered(Order order) {
         try {
             orderMapper.updateOrderStateToDelivered(order);
-            return "success";
+            return ResponseWrapper.markSuccessButNoData();
         }catch (Exception e){
-            return "error";
+            return ResponseWrapper.markError(e);
         }
     }
 }

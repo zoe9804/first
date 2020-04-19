@@ -19,7 +19,7 @@ public class UserImpl implements UserService {
                 userMapper.insertUser(user);
                 return ResponseWrapper.markCustom(true,"0000","注册成功",null);
             } catch (Exception e) {
-                return ResponseWrapper.markCustom(false,"0003","出现异常",null);
+                return ResponseWrapper.markCustom(false,"0003","出现异常",e);
             }
         }
         else{
@@ -33,12 +33,12 @@ public class UserImpl implements UserService {
         User password = userMapper.selectUserOrAdministratorByUserPhone(user);
         if(password != null){
             if (password.getUserPassword().equals(user.getUserPassword())){
-                return ResponseWrapper.markCustom(true,"0000","登陆成功",null);
+                return ResponseWrapper.markCustom(true,"0000","登陆成功",password.getUserId());
             }else {
-                return ResponseWrapper.markCustom(true,"0001","密码错误",null);
+                return ResponseWrapper.markCustom(false,"0001","密码错误",null);
             }
         }else {
-            return ResponseWrapper.markCustom(true,"0002","用户不存在",null);
+            return ResponseWrapper.markCustom(false,"0002","用户不存在",null);
         }
     }
 
@@ -49,23 +49,35 @@ public class UserImpl implements UserService {
             userMapper.insertUser(user);
             return ResponseWrapper.markCustom(true,"0000","添加成功",null);
         } catch (Exception e) {
-            return ResponseWrapper.markCustom(true,"0001","error",null);
+            return ResponseWrapper.markError(e);
         }
     }
 
     @Override
     public ResponseWrapper FindALlUser() {
-        return ResponseWrapper.markCustom(true,"0000","查找全部用户成功",userMapper.selectAllUser());
+        try {
+            return ResponseWrapper.markCustom(true, "0000", "查找全部用户成功", userMapper.selectAllUser());
+        }catch (Exception e){
+            return ResponseWrapper.markError(e);
+        }
     }
 
     @Override
     public ResponseWrapper FindALlAdministrator() {
-        return ResponseWrapper.markCustom(true,"0000","查找全部管理员成功",userMapper.selectAllAdministrator());
+        try {
+            return ResponseWrapper.markCustom(true, "0000", "查找全部管理员成功", userMapper.selectAllAdministrator());
+        }catch (Exception e){
+            return ResponseWrapper.markError(e);
+        }
     }
 
     @Override
     public ResponseWrapper findUserOrAdministratorByPhone(User user) {
-        return ResponseWrapper.markCustom(true,"0001","error",userMapper.selectUserOrAdministratorByUserPhone(user));
+        try {
+            return ResponseWrapper.markCustom(true,"0001","error",userMapper.selectUserOrAdministratorByUserPhone(user));
+        }catch (Exception e){
+            return ResponseWrapper.markError(e);
+        }
     }
 }
 

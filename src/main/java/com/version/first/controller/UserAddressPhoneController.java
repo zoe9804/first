@@ -1,5 +1,6 @@
 package com.version.first.controller;
 
+import com.version.first.Result.ResponseWrapper;
 import com.version.first.bean.UserAddressPhone;
 import com.version.first.service.UserAddressPhoneService;
 import org.springframework.stereotype.Controller;
@@ -17,27 +18,25 @@ public class UserAddressPhoneController {
 
     @RequestMapping("/addUserAddressPhone")//添加收货人和地址与电话
     @ResponseBody
-    public String AddUserAddressPhoneService(@RequestBody UserAddressPhone userAddressPhone){
-        String result = userAddressPhoneService.addUserAddressPhoneService(userAddressPhone);
-        return result;
+    public ResponseWrapper AddUserAddressPhoneService(@RequestBody UserAddressPhone userAddressPhone){
+        return userAddressPhoneService.addUserAddressPhoneService(userAddressPhone);
     }
 
     @RequestMapping("/getAllUserAddressPhone")//查看所有相应的地址电话
     @ResponseBody
-    public List<UserAddressPhone> GetAllUserAddressPhone(@RequestBody UserAddressPhone userAddressPhone){
-        List<UserAddressPhone> userAddressPhoneList = userAddressPhoneService.getAllUserAddressPhone(userAddressPhone);
-        return userAddressPhoneList;
+    public ResponseWrapper GetAllUserAddressPhone(@RequestBody UserAddressPhone userAddressPhone){
+        return userAddressPhoneService.getAllUserAddressPhone(userAddressPhone);
     }
 
     @RequestMapping("/updateUserAddressPhoneById")//更改地址和联系方式
     @ResponseBody
-    public UserAddressPhone UpdateUserAddressPhoneById(@RequestBody UserAddressPhone userAddressPhone){
+    public ResponseWrapper UpdateUserAddressPhoneById(@RequestBody UserAddressPhone userAddressPhone){
         return userAddressPhoneService.updateUserAddressPhone(userAddressPhone);
     }
 
     @RequestMapping("/deleteUserAddressPhoneById")//删除地址和联系方式
     @ResponseBody
-    public String DeleteUserAddressPhoneById(@RequestBody UserAddressPhone userAddressPhone){
+    public ResponseWrapper DeleteUserAddressPhoneById(@RequestBody UserAddressPhone userAddressPhone){
         return userAddressPhoneService.deleteUserAddressPhoneById(userAddressPhone);
     }
 }
