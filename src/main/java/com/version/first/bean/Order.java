@@ -6,13 +6,14 @@ import java.util.List;
 public class Order {
     private int id;
     private int userId;
-    private int orderId;
+    private long orderId;
     private int sumPrice;
     private String payId;
     private int userAddressPhoneId;
     private int deliverId;
     private String orderState;
     private Date orderTime;
+    private String orderWord;
     private List<OrderDetails> orderDetails;
 
     public List<OrderDetails> getOrderDetails() {
@@ -47,11 +48,11 @@ public class Order {
         this.userId = userId;
     }
 
-    public int getOrderId() {
+    public long getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(int orderId) {
+    public void setOrderId(long orderId) {
         this.orderId = orderId;
     }
 
@@ -93,5 +94,13 @@ public class Order {
 
     public void setOrderState(String orderState) {
         this.orderState = orderState;
+    }
+
+    public String getOrderWord() {
+        return orderWord;
+    }
+
+    public void setOrderWord(String orderWord) {
+        this.orderWord = orderWord;
     }
 }

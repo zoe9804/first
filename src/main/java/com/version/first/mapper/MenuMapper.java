@@ -11,4 +11,5 @@ public interface MenuMapper {
     List<Menu> selectMenuByFuzzyQueryMenuName(@Param("menu")Menu menu);
     void deleteMenuByName(@Param("menu")Menu menu);
     void updateMenuByMenuId(@Param("menu")Menu menu);
+    void insertMenuPictureByMenuId(@Param("menu")Menu menu);
 }

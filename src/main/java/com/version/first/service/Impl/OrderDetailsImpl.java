@@ -29,6 +29,7 @@ public class OrderDetailsImpl implements OrderDetailsService {
     @Override
     public ResponseWrapper findOrderIdByMenuId(OrderDetails orderDetails) {
         try {
+            orderDetailsMapper.selectOrderIdByMenuId(orderDetails);
             return ResponseWrapper.markCustom(true,"0000","查询成功",orderDetailsMapper.selectOrderIdByMenuId(orderDetails));
         }catch (Exception e){
             return ResponseWrapper.markError(e);
@@ -36,5 +37,13 @@ public class OrderDetailsImpl implements OrderDetailsService {
 
     }
 
-
+    @Override
+    public ResponseWrapper addOrderRemark(OrderDetails orderDetails) {
+        try {
+            orderDetailsMapper.insertOrderRemark(orderDetails);
+            return ResponseWrapper.markSuccessButNoData();
+        }catch (Exception e){
+            return ResponseWrapper.markError(e);
+        }
+    }
 }

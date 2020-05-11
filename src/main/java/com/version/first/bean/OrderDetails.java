@@ -2,7 +2,7 @@ package com.version.first.bean;
 
 public class OrderDetails {
     private int orderDetailsId;
-    private int orderId;
+    private long orderId;
     private int menuId;
     private int menuAmount;
     private String menuRemark;
@@ -15,11 +15,11 @@ public class OrderDetails {
         this.menuRemark = menuRemark;
     }
 
-    public int getOrderId() {
+    public long getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(int orderId) {
+    public void setOrderId(long orderId) {
         this.orderId = orderId;
     }
 

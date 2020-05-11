@@ -29,4 +29,10 @@ public class OrderDetailsController {
         return orderDetailsService.findOrderIdByMenuId(orderDetails);
     }
 
+    @RequestMapping("/addOrderRemark")//添加商品评价
+    @ResponseBody
+    public ResponseWrapper AddOrderRemark(@RequestBody OrderDetails orderDetails){
+        return orderDetailsService.addOrderRemark(orderDetails);
+    }
+
 }

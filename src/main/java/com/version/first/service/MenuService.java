@@ -10,4 +10,5 @@ public interface MenuService {
     ResponseWrapper findMenuByFuzzyQueryMenuName(Menu menu);
     ResponseWrapper deleteMenuByName(Menu menu);
     ResponseWrapper changeMenuByMenuId(Menu menu);
+    ResponseWrapper addMenuPictureByMenuId(Menu menu);
 }

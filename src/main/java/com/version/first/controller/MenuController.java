@@ -42,7 +42,13 @@ public class MenuController {
 
     @RequestMapping("/changeMenuByMenuId")//后台修改菜品
     @ResponseBody
-    public ResponseWrapper changeMenuByMenuId(@RequestBody Menu menu){
+    public  ResponseWrapper ChangeMenuByMenuId(@RequestBody Menu menu){
         return menuService.changeMenuByMenuId(menu);
+    }
+
+    @RequestMapping("/addMenuPictureByMenuId")
+    @ResponseBody
+    public ResponseWrapper AddMenuPictureByMenuId(@RequestBody Menu menu){
+        return menuService.addMenuPictureByMenuId(menu);
     }
 }

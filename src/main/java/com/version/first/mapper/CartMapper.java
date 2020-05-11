@@ -10,5 +10,6 @@ public interface CartMapper {
     List<Cart> selectCartByUserId(@Param("cart")Cart cart);
     Cart selectCartByUserIdAndMenuId(@Param("cart")Cart cart);
     void updateCartByUserIdAndMenuId(@Param("cart")Cart cart);
+    void deleteCartByUserIdAndMenuId(@Param("cart")Cart cart);
 
 }

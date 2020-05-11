@@ -32,4 +32,10 @@ public class CartController {
         cartMap.put("cart",cartList);
         return ResponseWrapper.markSuccess(cartMap);
     }
+
+    @RequestMapping("/deleteCartByUserIdAndMenuId")//根据userId和MenuId删除购物车
+    @ResponseBody
+    public ResponseWrapper DeleteCartByUserIdAndMenuId(@RequestBody Cart cart){
+        return cartService.deleteCartByUserIdAndMenuId(cart);
+    }
 }

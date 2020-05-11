@@ -31,4 +31,9 @@
                 menu_picture = #{menu.menuPicture}
             where menu_id = #{menu.menuId}
     </update>
+    <update id="insertMenuPictureByMenuId" parameterType="com.version.first.bean.Menu">
+        update menu
+            set menu_picture = #{menu.menuPicture}
+            where menu_id = #{menu.menuId}
+    </update>
 </mapper>

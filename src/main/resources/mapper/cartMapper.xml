@@ -30,4 +30,7 @@
         set menu_amount=#{cart.menuAmount}
         where user_id=#{cart.userId} and menu_id=#{cart.menuId}
     </update>
+    <delete id="deleteCartByUserIdAndMenuId" parameterType="com.version.first.bean.Cart">
+        delete from cart where user_id=#{cart.userId} and menu_id=#{cart.menuId}
+    </delete>
 </mapper>

@@ -64,4 +64,14 @@ public class MenuImpl implements MenuService {
             return ResponseWrapper.markError(e);
         }
     }
+
+    @Override
+    public ResponseWrapper addMenuPictureByMenuId(Menu menu){
+//        try {
+            menuMapper.insertMenuPictureByMenuId(menu);
+            return ResponseWrapper.markSuccessButNoData();
+//        }catch (Exception e){
+//            return ResponseWrapper.markError(e);
+//        }
+    }
 }

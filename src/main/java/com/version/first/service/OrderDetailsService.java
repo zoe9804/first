@@ -8,4 +8,5 @@ import java.util.List;
 public interface OrderDetailsService {
     ResponseWrapper addOrderDetailsList(List<OrderDetails> orderDetailsList);
     ResponseWrapper findOrderIdByMenuId(OrderDetails orderDetails);
+    ResponseWrapper addOrderRemark(OrderDetails orderDetails);
 }

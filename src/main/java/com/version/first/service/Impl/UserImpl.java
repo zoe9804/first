@@ -33,7 +33,7 @@ public class UserImpl implements UserService {
         User password = userMapper.selectUserOrAdministratorByUserPhone(user);
         if(password != null){
             if (password.getUserPassword().equals(user.getUserPassword())){
-                return ResponseWrapper.markCustom(true,"0000","登陆成功",password.getUserId());
+                return ResponseWrapper.markCustom(true,"0000","登陆成功",password);
             }else {
                 return ResponseWrapper.markCustom(false,"0001","密码错误",null);
             }

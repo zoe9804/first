@@ -25,4 +25,8 @@
         left join `user` u on o.user_id = u.user_id
         where menu_id = #{orderDetailsList.menuId}
     </select>
+    <update id="insertOrderRemark" parameterType="com.version.first.bean.OrderDetails">
+        update order_details set menu_remark=#{orderDetails.menuRemark}
+        where order_id=#{orderDetails.orderId} and menu_id=#{orderDetails.menuId}
+    </update>
 </mapper>

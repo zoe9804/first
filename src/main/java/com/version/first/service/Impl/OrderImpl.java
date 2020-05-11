@@ -1,8 +1,10 @@
 package com.version.first.service.Impl;
 
 import com.version.first.Result.ResponseWrapper;
+import com.version.first.bean.Cart;
 import com.version.first.bean.Order;
 import com.version.first.bean.OrderDetails;
+import com.version.first.mapper.CartMapper;
 import com.version.first.mapper.OrderDetailsMapper;
 import com.version.first.mapper.OrderMapper;
 import com.version.first.service.OrderService;
@@ -20,16 +22,26 @@ public class OrderImpl implements OrderService{
     @Resource
     OrderDetailsMapper orderDetailsMapper;
 
+    @Resource
+    CartMapper cartMapper;
+
     @Override
     public ResponseWrapper addOrder(Order order) {
-        try {
+//        Cart cart=null;
+//        cart.setUserId(order.getUserId());
+        //插入一条order和多条orderDetails,删除购物车中的相关记录
+//        try {
             orderMapper.insertOrder(order);
             List<OrderDetails> orderDetailsList = order.getOrderDetails();
             orderDetailsMapper.insertOrderDetailsList(orderDetailsList);
+//            for (OrderDetails orderDetails : orderDetailsList) {
+//                cart.setMenuId(orderDetails.getMenuId());
+//                cartMapper.deleteCartByUserIdAndMenuId(cart);
+//            }
             return ResponseWrapper.markCustom(true,"0000","添加订单成功",null);
-        }catch (Exception e){
-            return ResponseWrapper.markError(e);
-        }
+//        }catch (Exception e){
+//            return ResponseWrapper.markError(e);
+//        }
     }
 
     @Override

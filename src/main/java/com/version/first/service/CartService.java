@@ -8,4 +8,5 @@ import java.util.List;
 public interface CartService {
     ResponseWrapper addCart(Cart cart);
     List<Cart> getCartByUserId(Cart cart);
+    ResponseWrapper deleteCartByUserIdAndMenuId(Cart cart);
 }
